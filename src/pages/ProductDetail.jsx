@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import {  Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { addProductCartThunk } from "../store/slices/cart.slice";
+import Carousel from 'react-bootstrap/Carousel';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -17,18 +18,16 @@ const ProductDetail = () => {
     (products) => products.category.id === productsDetail.category.id
   );
 
-  //   Nuevo funciona añadir
-
   useEffect(() => {
-    setRate(5);
+    setRate(1);
   }, [id]);
 
   const dispatch = useDispatch();
 
-  const [rate, setRate] = useState(5);
+  const [rate, setRate] = useState(0);
 
   const addCart = () => {
-    alert("rate: " + rate);
+    alert("Haz añadido " + rate + " productos a tu carrito");
     const cart = {
       id: id,
       quantity: rate,
@@ -36,51 +35,76 @@ const ProductDetail = () => {
     dispatch(addProductCartThunk(cart));
   };
 
-  //Nuevo hasta aqui funciona
+  console.log(relatedProducts)
 
   return (
     <div>
-      <h3>Producto</h3>
-      <div>
-        {/* //Nuevo funciona */}
-        <div className="rate">
-          <Button className="me-3" onClick={() => setRate(rate - 1)}>
-            -
-          </Button>
-          {rate}
-          <Button className="ms-3" onClick={() => setRate(rate + 1)}>
-            +
-          </Button>
-          <br />
-          <Button onClick={addCart}>Add to cart</Button>
+      <div className="container-all">
+      <div className="container-carousel">
+            <Carousel className="">
+            <Carousel.Item interval={1000}>
+              <img style={{ height: 300}}
+                className="d-block w-100"
+                src={productsDetail?.productImgs?.[0]}
+                alt="First slide"
+              />
+            
+            </Carousel.Item>
+            <Carousel.Item interval={500}>
+              <img style={{ height: 300}}
+                className="d-block w-100"
+                src={productsDetail?.productImgs?.[1]}
+                alt="Second slide"
+              />
+              
+            </Carousel.Item>
+            <Carousel.Item>
+              <img style={{ height: 300}}
+                className="d-block w-100"
+                src={productsDetail?.productImgs?.[2]}
+                alt="Third slide"
+              />
+             
+            </Carousel.Item>
+          </Carousel>
+
+          <div>
+            <h4><b>{productsDetail?.title}</b></h4>
+            <p>{productsDetail?.description}</p>
+            <div className="rate">
+              
+              <div className="container-btn-add-cart">
+              <div><b>$ {productsDetail.price}</b></div>
+               <div className="btn-add-cart">
+                 <Button variant="light" className="me-3" onClick={() => setRate(rate - 1)}>
+                   -
+                 </Button>
+                   <div>{rate}</div>
+                   <Button variant="light" className="ms-3" onClick={() => setRate(rate + 1)}>
+                     +
+                 </Button>
+               </div>
+              </div>
+                <br />
+              <Button onClick={addCart}>Añadir al carrito</Button>
         </div>
-
-        {/* //Nuevo hasta aqui funciona */}
-
-        <ul>
+          </div>
+      </div>
+      <h3>Compara con otros productos similares</h3>
+      <ul className="grup-similar">
           {relatedProducts.map((products) => (
             <li key={products.id}>
+              <img style={{height: 150}} className="img-similar" src={products.productImgs[1]} alt="" />
               <Link to={`/productDetail/${products.id}`}>{products.title}</Link>
             </li>
           ))}
         </ul>
-        <h2>{productsDetail?.title}</h2>
-        <p>{productsDetail?.description}</p>
-        <img
-          src={productsDetail?.productImgs?.[0]}
-          alt={productsDetail?.title}
-        />
-        <img
-          src={productsDetail?.productImgs?.[1]}
-          alt={productsDetail?.title}
-        />
-        <img
-          src={productsDetail?.productImgs?.[2]}
-          alt={productsDetail?.title}
-        />
+
+
       </div>
     </div>
   );
 };
 
 export default ProductDetail;
+

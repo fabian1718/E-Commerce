@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Form, InputGroup  } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
 import '../styles/home.css'
 
 
@@ -33,9 +34,13 @@ const Home = () => {
         ); setProductsFiltered(filtered)
     }
 
+    console.log(productsFiltered)
+
     return (
         <div>
+          
             <h3 className='h3-home'>Inicio</h3>
+
             <div className='container-btns-category'>
                 {
                     categoryProds.map(categoryProd => (
@@ -56,10 +61,20 @@ const Home = () => {
             <ul className='container-products'>
                 {productsFiltered.map(products => (
                     <li className='product-home' key={products.id} onClick={() => navigate(`/productDetail/${products.id}`)}>
+                        
                         <div className='container-img-product'>
-                            <img style={{width:250}} className='img-home' src={products.productImgs?.[0]} alt={products.title} />
+                            <img style={{ height:180}} className='img-home' src={products.productImgs?.[0]} alt={products.title} />
                         </div>
-                        <h4>{products.title}</h4>
+                        <div className='container-description-product'>
+                            <h4>{products.title}</h4>
+                            <div className='price-product'>
+                                <b>Precio </b>
+                                <div className='price-product-cart'>
+                                    <h5><b>$ {products.price}</b></h5>
+                                    <i class="fa-solid fa-cart-plus price-i"></i>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 ))}
             </ul>

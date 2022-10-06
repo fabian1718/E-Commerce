@@ -63,3 +63,64 @@ gap: 10px;
     text-align: center;
 }
 
+.conatiner-purchase{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.h5-purchase:hover{
+    cursor: pointer;
+    color: blue;
+}
+
+.container-all{
+    margin-top: 100px;
+}
+
+.container-carousel{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr)
+}
+
+.carousel{
+    width: 500px;
+    height: 400px;
+    padding: 20px;
+}
+
+.btn-add-cart{
+    display: flex;
+    align-items: center;
+}
+
+.container-btn-add-cart{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.rate{
+    display: flex;
+    flex-direction: column;
+}
+
+.img-similar{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.grup-similar{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+

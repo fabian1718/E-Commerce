@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getCartThunk, purchaseCartThunk } from "../store/slices/cart.slice";
 import productsSlice from "../store/slices/products.slice";
+import '../styles/cartsSidebar.css'
+import Total from "./Total";
 
 const CartsSidebar = ({ show, handleClose }) => {
   
@@ -19,19 +21,40 @@ const CartsSidebar = ({ show, handleClose }) => {
   return (
     <Offcanvas show={show} onHide={handleClose} placement="end">
       <Offcanvas.Header closeButton>
-        <Offcanvas.Title>Mis compras</Offcanvas.Title>
+        <Offcanvas.Title> <b>Carrito de compras</b></Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
-        <ul>
+        <ul className="container-product-cart">
         {
         cart.map(product => (
             <li key={product.id}>
-                <Link to={`/productDetail/${product.id}`}>{product.title}</Link>
+                <div >
+                   <div className="delette-cart">
+                     <p className="product-p">{product.brand}</p>
+                     <i class="fa-regular fa-trash-can i-delette"></i>
+                   </div>
+                    <Link className="link-cart" to={`/productDetail/${product.id}`}>{product.title}</Link>
+                    <div className="cant-cart">{product.productsInCart.quantity}</div>
+                    <div className="total-product-cart">
+                        <p className="product-p">Total: </p>
+                        <b className="link-cart">{(product.price) * (product.productsInCart.quantity)}</b>
+                    </div>
+                </div >
             </li>
         ))
         }
         </ul>
-        <Button onClick={() => dispatch(purchaseCartThunk())}>
+        <li>
+            <div className="total-general">
+                <p className="product-p">Total </p>
+                <Total cart={cart}/>
+            </div>
+        </li>
+        <Button 
+          onClick={
+            () => dispatch(purchaseCartThunk())
+            
+            }>
             Checkout
         </Button>
       </Offcanvas.Body>
