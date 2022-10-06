@@ -17,7 +17,7 @@ html{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 80vh;
     background: #F8F8F8;
 }
 
@@ -27,6 +27,12 @@ html{
     gap: 50px;
     padding: 20px;
     background: white;
+    width: 50%;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
 }
 
 .container-date{
@@ -34,6 +40,24 @@ html{
     flex-direction: column;
     background: rgba(216, 245, 253, 0.869);
     padding: 30px;
+    gap: 20px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+}
+
+.container-login-data{
+    display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.data-login{
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 .center{

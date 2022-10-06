@@ -32,11 +32,17 @@ const Login = () => {
       <div className="container-login">
         <div className="container-date">
             <div className="center">
-                <h4>Ingresa email y contraseña</h4>
+                <h4> <b>Datos de prueba</b></h4>
             </div>
-            <div>
-                <p><i class="fa-solid fa-envelope"></i>john@gmail.com</p>
-                <p> <i class="fa-solid fa-lock"></i>john1234</p>
+            <div className="container-login-data">
+                <div className="data-login">
+                  <i class="fa-solid fa-envelope"></i>
+                  <label>fabian@gmail.com</label>
+                </div>
+                  <div className="data-login">
+                    <i class="fa-solid fa-lock"></i>
+                    <label>fabian1234</label>
+                  </div>
             </div>
         </div>
         <Form onSubmit={handleSubmit(submit)}>
