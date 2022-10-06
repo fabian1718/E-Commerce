@@ -35,7 +35,7 @@ const Home = () => {
 
     return (
         <div>
-            <h3>Home</h3>
+            <h3 className='h3-home'>Inicio</h3>
             <div className='container-btns-category'>
                 {
                     categoryProds.map(categoryProd => (
