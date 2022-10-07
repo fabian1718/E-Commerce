@@ -102,10 +102,10 @@ const ProductDetail = () => {
             </div>
           </div>
         </div>
-        <h3>Compara con otros productos similares</h3>
+        <h3 className="h3-cart">Compara con otros productos similares</h3>
         <ul className="grup-similar">
           {relatedProducts.map((products) => (
-            <li key={products.id}>
+            <li className="li-cart" key={products.id}>
               <img
                 style={{ height: 150, objectFit: "contain" }}
                 className="img-similar"

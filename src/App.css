@@ -84,6 +84,30 @@ gap: 10px;
     grid-template-columns: repeat(2, 1fr)
 }
 
+@media (max-width: 1000px){
+    .container-carousel{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr)
+}
+
+.container-all{
+    margin-top: 50px;
+}
+
+.h3-cart{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.li-cart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+}
+
 .carousel{
     width: 500px;
     height: 400px;
