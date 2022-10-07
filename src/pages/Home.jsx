@@ -58,12 +58,16 @@ const Home = () => {
                     Button
                 </Button>
             </InputGroup>
+
             <ul className='container-products'>
                 {productsFiltered.map(products => (
                     <li className='product-home' key={products.id} onClick={() => navigate(`/productDetail/${products.id}`)}>
                         
-                        <div className='container-img-product'>
-                            <img style={{ height:180}} className='img-home' src={products.productImgs?.[0]} alt={products.title} />
+                        <div className='product-card'>
+                            <div className='image'>
+                                <img style={{ height:250, objectFit: "contain"}} className='over' src={products.productImgs?.[0]} alt={products.title} />
+                                <img style={{ height:250, objectFit: "contain"}} src={products.productImgs?.[1]} alt={products.title} />
+                            </div>
                         </div>
                         <div className='container-description-product'>
                             <h4>{products.title}</h4>
